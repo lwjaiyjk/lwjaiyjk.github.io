@@ -24,7 +24,7 @@
   // 此处代码 后面相关章节会去说明
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('sw.js')
+      navigator.serviceWorker.register('/sw.js')
         .then(function(registration) {console.log("registration success");})
         .catch(function(err) {console.log("registration failure");}).then(() => sendMessageToSW('Hello, service worker.')).then(console.log)
         .catch(() => console.error('Send message error.'));
