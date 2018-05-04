@@ -46,6 +46,7 @@ self.addEventListener('message', function(event) {
 });
 
 const onPush = function(event) {
+  console.log("push event");
     event.waitUntil(self.registration.showNotification('New Post Arrival', {
         icon: '/assets/icon-512.png'
     }));
