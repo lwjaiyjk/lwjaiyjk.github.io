@@ -29,3 +29,8 @@ self.addEventListener('fetch', function (event) {
 self.addEventListener('activate', function () {
     console.log('Activated');
 });
+
+// service-worker.js
+self.addEventListener('message', function(event) {
+    console.log(event.data);
+});
