@@ -1,4 +1,4 @@
-// 此处代码 后面相关章节会去说明
+
 var cacheName = 'helloWorld'
 
 console.log('In service worker.');
