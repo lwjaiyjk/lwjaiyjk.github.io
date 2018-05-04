@@ -9,7 +9,6 @@
 <body>
   <h1>Manifest Page</h1>
      <div id="root"></div>
-  <script type="text/javascript" src="bundle.js"></script>
   <script>
   const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
@@ -41,5 +40,6 @@
     document.write("<h1>不支持serviceWork</h1>");
   }
   </script>
+  <script type="text/javascript" src="bundle.js"></script>
 </body>
 </html>
