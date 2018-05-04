@@ -46,17 +46,7 @@ self.addEventListener('message', function(event) {
 });
 
 const onPush = function(event) {
-   Notification.requestPermission().then(function(result) {
-  if (result === 'denied') {
-    console.log('Permission wasn\'t granted. Allow a retry.');
-    return;
-  }
-  if (result === 'default') {
-    console.log('The permission request was dismissed.');
-    return;
-  }
-  // Do something with the granted permission.
-});
+   
   
   console.log("push event");
     event.waitUntil(self.registration.showNotification('New Post Arrival', {
