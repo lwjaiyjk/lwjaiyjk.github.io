@@ -46,11 +46,25 @@ self.addEventListener('message', function(event) {
 });
 
 const onPush = function(event) {
-  Notification.requestPermission();
+   Notification.requestPermission(function(status) {  
+            //status是授权状态，如果用户允许显示桌面通知，则status为'granted'  
+            console.log('status: ' + status);  
+  
+            //permission只读属性  
+            var permission = Notification.permission;  
+            //default 用户没有接收或拒绝授权 不能显示通知  
+            //granted 用户接受授权 允许显示通知  
+            //denied  用户拒绝授权 不允许显示通知  
+  
+            console.log('permission: ' + permission);  
+        });  
+  
   console.log("push event");
     event.waitUntil(self.registration.showNotification('New Post Arrival', {
         icon: '/assets/icon-512.png'
     }));
 };
+
+
 
 self.addEventListener('push', onPush);
