@@ -29,7 +29,10 @@
         .catch(function(err) {console.log("registration failure");}).then(() => sendMessageToSW('Hello, service worker.')).then(console.log)
         .catch(() => console.error('Send message error.'));
 
-    })
+    });
+    navigator.serviceWorker.addEventListener('message', function (event) {
+           console.log("recevice " + event.data);
+        });
   }else{
     console.log("browser not support");
   }
