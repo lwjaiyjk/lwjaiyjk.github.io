@@ -7,7 +7,7 @@
   <link rel="manifest" href="./manifest.json"> <!-- 引用manifest文件 -->
 </head>
 <body>
-  <h1>Manifest Page</h1>
+  <h1 id="manifestPage">Manifest Page</h1>
      <div id="root"></div>
   <script>
   const sendMessageToSW = msg => new Promise((resolve, reject) => {
@@ -24,7 +24,8 @@
 });
   // 此处代码 后面相关章节会去说明
   if ('serviceWorker' in navigator) {
-    document.write("<h1>支持service worker</h1>")
+    document.getElementById("manifestPage").innerHTML="<h1>支持service worker</h1>";
+    document.write("<h1>支持service worker</h1>");
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js')
         .then(function(registration) {console.log("registration success");})
@@ -37,6 +38,7 @@
         });
   }else{
     console.log("browser not support");
+    document.getElementById("manifestPage").innerHTML="<h1>不支持service worker</h1>";
     document.write("<h1>不支持serviceWork</h1>");
   }
   </script>
