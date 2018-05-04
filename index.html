@@ -25,6 +25,7 @@
 });
   // 此处代码 后面相关章节会去说明
   if ('serviceWorker' in navigator) {
+    document.write("<h1>支持service worker</h1>")
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js')
         .then(function(registration) {console.log("registration success");})
@@ -37,6 +38,7 @@
         });
   }else{
     console.log("browser not support");
+    document.write("<h1>不支持serviceWork</h1>");
   }
   </script>
 </body>
