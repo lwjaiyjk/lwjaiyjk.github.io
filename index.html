@@ -29,8 +29,8 @@
     //document.write("<h1>支持service worker</h1>");
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js')
-        .then(function(registration) {console.log("registration success");})
-        .catch(function(err) {console.log("registration failure");}).then(() => sendMessageToSW('Hello, service worker.')).then(console.log)
+        .then(function(registration) {console.log("registration success"); document.getElementById("manifestPage").innerHTML="<h1>registration service worker success</h1>";})
+        .catch(function(err) {console.log("registration failure");document.getElementById("manifestPage").innerHTML="<h1>registration service worker failure</h1>";}).then(() => sendMessageToSW('Hello, service worker.')).then(console.log)
         .catch(() => console.error('Send message error.'));
 
     });
