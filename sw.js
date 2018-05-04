@@ -1,7 +1,10 @@
 // 此处代码 后面相关章节会去说明
 var cacheName = 'helloWorld'
 
+console.log('In service worker.');
+
 self.addEventListener('install', event => {
+  console.log("install event");
   event.waitUntil(
     caches.open(cacheName)
     .then(cache => cache.addAll([
@@ -11,6 +14,7 @@ self.addEventListener('install', event => {
 })
 
 self.addEventListener('fetch', function (event) {
+  console.log("fetch event");
   event.respondWith(
     caches.match(event.request)
     .then(function (response) {
@@ -21,3 +25,7 @@ self.addEventListener('fetch', function (event) {
     })
   )
 })
+
+self.addEventListener('activate', function () {
+    console.log('Activated');
+});

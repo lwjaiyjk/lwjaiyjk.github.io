@@ -13,9 +13,11 @@
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('sw.js')
-        .then(function(registration) {})
-        .catch(function(err) {})
+        .then(function(registration) {console.log("registration success");})
+        .catch(function(err) {console.log("registration failure");})
     })
+  }else{
+    console.log("browser not support");
   }
   </script>
 </body>
