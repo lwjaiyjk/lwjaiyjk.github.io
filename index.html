@@ -9,13 +9,24 @@
 <body>
   <h1>Manifest Page</h1>
   <script>
-    const sendMessageToSW = msg => navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg);
+  const sendMessageToSW = msg => new Promise((resolve, reject) => {
+    const messageChannel = new MessageChannel();
+    messageChannel.port1.onmessage = event => {
+        if (event.data.error) {
+            reject(event.data.error);
+        } else {
+            resolve(event.data);
+        }
+    };
+
+    navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
+});
   // 此处代码 后面相关章节会去说明
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('sw.js')
         .then(function(registration) {console.log("registration success");})
-        .catch(function(err) {console.log("registration failure");}).then(() => sendMessageToSW('Hello, service worker.'))
+        .catch(function(err) {console.log("registration failure");}).then(() => sendMessageToSW('Hello, service worker.')).then(console.log)
         .catch(() => console.error('Send message error.'));
 
     })

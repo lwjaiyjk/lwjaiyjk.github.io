@@ -34,3 +34,9 @@ self.addEventListener('activate', function () {
 self.addEventListener('message', function(event) {
     console.log(event.data);
 });
+
+self.clients.matchAll().then(function(clients) {
+    clients.forEach(function(client) {
+        client.postMessage('Service worker attached.');
+    })
+});
