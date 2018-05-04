@@ -64,6 +64,19 @@ const onPush = function(event) {
             });
 };
 
-
-
-self.addEventListener('push', onPush);
+self.addEventListener('push',  function(event) {
+   
+       console.log("push event");
+   /*if (Notification.permission == "granted") {
+    event.waitUntil(self.registration.showNotification('New Post Arrival', {
+        icon: '/assets/icon-512.png'
+    }));
+  }else if (Notification.permission != "denied") {
+            Notification.requestPermission(function (permission) {
+              if (Notification.permission == "granted") {
+            event.waitUntil(self.registration.showNotification('New Post Arrival', {
+        icon: '/assets/icon-512.png'
+    }));
+          }
+            });*/
+});
