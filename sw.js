@@ -12,7 +12,7 @@ self.addEventListener('install', event => {
     ]))
   );
   self.skipWaiting();
-})
+});
 
 self.addEventListener('fetch', function (event) {
   console.log("fetch event");
@@ -25,7 +25,7 @@ self.addEventListener('fetch', function (event) {
       return fetch(event.request);
     })
   )
-})
+});
 
 self.addEventListener('activate', function () {
     console.log('Activated');
@@ -46,7 +46,7 @@ self.addEventListener('message', function(event) {
     }*/
 });
 
-const onPush = function(event) {
+/*const onPush = function(event) {
    
   
   console.log("push event");
@@ -62,21 +62,8 @@ const onPush = function(event) {
     }));
           }
             });
-};
-
+};*/
 self.addEventListener('push',  function(event) {
    
        console.log("push event");
-   /*if (Notification.permission == "granted") {
-    event.waitUntil(self.registration.showNotification('New Post Arrival', {
-        icon: '/assets/icon-512.png'
-    }));
-  }else if (Notification.permission != "denied") {
-            Notification.requestPermission(function (permission) {
-              if (Notification.permission == "granted") {
-            event.waitUntil(self.registration.showNotification('New Post Arrival', {
-        icon: '/assets/icon-512.png'
-    }));
-          }
-            });*/
 });
