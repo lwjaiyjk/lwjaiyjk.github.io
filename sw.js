@@ -35,7 +35,7 @@ self.addEventListener('activate', function () {
 self.addEventListener('message', function(event) {
     console.log(event.data);
 
-   var promise =self.clients.matchAll().then(function(clients) {
+  /* var promise =self.clients.matchAll().then(function(clients) {
     clients.forEach(function(client) {
         client.postMessage('Service worker attached.');
     })
@@ -43,7 +43,7 @@ self.addEventListener('message', function(event) {
 
     if (event.waitUntil) {
         event.waitUntil(promise);
-    }
+    }*/
 });
 
 const onPush = function(event) {
