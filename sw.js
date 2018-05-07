@@ -16,7 +16,9 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', function (event) {
   console.log("fetch event");
-  event.respondWith(
+
+  return fetch(event.request);
+  /*event.respondWith(
     caches.match(event.request)
     .then(function (response) {
       if (response) {
@@ -24,7 +26,7 @@ self.addEventListener('fetch', function (event) {
       }
       return fetch(event.request);
     })
-  )
+  )*/
 });
 
 self.addEventListener('activate', function () {
