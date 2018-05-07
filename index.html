@@ -17,7 +17,7 @@
 <script type="text/javascript" src="bundle.js"></script>
  <script type="text/javascript">
    //$(document).ready(function(){ alert("警告的信息");});
-  const sendMessageToSW = msg => new Promise((resolve, reject) => {
+ /* const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
     messageChannel.port1.onmessage = event => {
         if (event.data.error) {
@@ -28,7 +28,7 @@
     };
 
     navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
-  });
+  });*/
   $(document).ready(function(){$("manifestPage").innerHTML="<h1> coming service worker</h1>"});
   //alert("-----------coming--------");
   // 此处代码 后面相关章节会去说明
@@ -38,13 +38,13 @@
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js')
         .then(function(registration) {console.log("registration success"); document.getElementById("manifestPage").innerHTML="<h1>registration service worker success</h1>";})
-        .catch(function(err) {console.log("registration failure");document.getElementById("manifestPage").innerHTML="<h1>registration service worker failure</h1>";}).then(() => sendMessageToSW('Hello, service worker.')).then(console.log)
-        .catch(() => console.error('Send message error.'));
+        .catch(function(err) {console.log("registration failure");document.getElementById("manifestPage").innerHTML="<h1>registration service worker failure</h1>";});/*.then(() => sendMessageToSW('Hello, service worker.')).then(console.log)
+        .catch(() => console.error('Send message error.'));*/
 
     });
-    navigator.serviceWorker.addEventListener('message', function (event) {
+   /* navigator.serviceWorker.addEventListener('message', function (event) {
            console.log("recevice " + event.data);
-        });
+        });*/
   }else{
     console.log("browser not support");
     document.getElementById("manifestPage").innerHTML="<h1>不支持service worker</h1>";

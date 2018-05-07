@@ -5,13 +5,13 @@ console.log('In service worker.');
 
 self.addEventListener('install', event => {
   console.log("install event");
-  event.waitUntil(
+ /* event.waitUntil(
     caches.open(cacheName)
     .then(cache => cache.addAll([
       'index.html','bundle.js'
     ]))
-  );
-  self.skipWaiting();
+  );*/
+ // self.skipWaiting();
 });
 
 self.addEventListener('fetch', function (event) {
