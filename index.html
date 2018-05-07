@@ -21,8 +21,9 @@
     };
 
     navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
-});
+  });
   document.getElementById("manifestPage").innerHTML="<h1> coming service worker</h1>";
+  alert("-----------coming--------")
   // 此处代码 后面相关章节会去说明
   if ('serviceWorker' in navigator) {
     document.getElementById("manifestPage").innerHTML="<h1>支持service worker</h1>";
