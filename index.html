@@ -16,7 +16,7 @@
 </body>
 <script type="text/javascript" src="bundle.js"></script>
  <script type="text/javascript">
-   $(document).ready(function(){ alert("警告的信息");});
+   //$(document).ready(function(){ alert("警告的信息");});
   const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
     messageChannel.port1.onmessage = event => {
@@ -30,7 +30,7 @@
     navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
   });
   $(document).ready(function(){$("manifestPage").innerHTML="<h1> coming service worker</h1>"});
-  alert("-----------coming--------");
+  //alert("-----------coming--------");
   // 此处代码 后面相关章节会去说明
   if ('serviceWorker' in navigator) {
     document.getElementById("manifestPage").innerHTML="<h1>支持service worker</h1>";
