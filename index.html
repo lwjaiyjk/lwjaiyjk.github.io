@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manifest</title>
   <link rel="manifest" href="/manifest.json"> <!-- 引用manifest文件 -->
+   <script src="js/jquery.min.js"></script>
 </head>
 <body>
   <h1 id="manifestPage">Manifest Page yjk</h1>
      <div id="root"></div>
-  <script>
-    alert("script----------");
+  <script type="text/javascript">
+   $(document).ready(function(){ alert("警告的信息");});
   const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
     messageChannel.port1.onmessage = event => {
