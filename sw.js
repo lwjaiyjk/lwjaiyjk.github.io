@@ -1,24 +1,26 @@
 
-var cacheName = 'helloWorld'
+var cacheName = 'helloWorld';
+var cacheStorageKey = 'minimal-pwa-1'
+
+var cacheList = [
+  "index.html",
+  "bundle.js"
+]
 
 console.log('In service worker.');
 
 self.addEventListener('install', event => {
   console.log("install event");
- /* event.waitUntil(
+  event.waitUntil(
     caches.open(cacheName)
-    .then(cache => cache.addAll([
-      'index.html','bundle.js'
-    ]))
-  );*/
- // self.skipWaiting();
+    .then(cache => cache.addAll(cacheList)).then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('fetch', function (event) {
   console.log("fetch event");
 
-  return fetch(event.request);
-  /*event.respondWith(
+  return event.respondWith(
     caches.match(event.request)
     .then(function (response) {
       if (response) {
@@ -26,11 +28,24 @@ self.addEventListener('fetch', function (event) {
       }
       return fetch(event.request);
     })
-  )*/
+  )
 });
 
 self.addEventListener('activate', function () {
     console.log('Activated');
+    e.waitUntil(
+    Promise.all(
+      caches.keys().then(cacheNames => {
+        return cacheNames.map(name => {
+          if (name !== cacheStorageKey) {
+            return caches.delete(name)
+          }
+        })
+      })
+    ).then(() => {
+      return self.clients.claim()
+    })
+  )
 });
 
 // service-worker.js
