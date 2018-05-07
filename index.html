@@ -10,7 +10,11 @@
 <body>
   <h1 id="manifestPage">Manifest Page yjk</h1>
      <div id="root"></div>
-  <script type="text/javascript">
+ 
+  
+</body>
+<script type="text/javascript" src="bundle.js"></script>
+ <script type="text/javascript">
    $(document).ready(function(){ alert("警告的信息");});
   const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
@@ -24,8 +28,8 @@
 
     navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
   });
-  document.getElementById("manifestPage").innerHTML="<h1> coming service worker</h1>";
-  alert("-----------coming--------")
+  $(document).ready(function(){$("manifestPage").innerHTML="<h1> coming service worker</h1>"});
+  alert("-----------coming--------");
   // 此处代码 后面相关章节会去说明
   if ('serviceWorker' in navigator) {
     document.getElementById("manifestPage").innerHTML="<h1>支持service worker</h1>";
@@ -45,8 +49,5 @@
     document.getElementById("manifestPage").innerHTML="<h1>不支持service worker</h1>";
    // document.write("<h1>不支持serviceWork</h1>");
   }
-
   </script>
-  <script type="text/javascript" src="bundle.js"></script>
-</body>
 </html>
