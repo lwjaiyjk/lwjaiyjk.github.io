@@ -10,6 +10,7 @@
   <h1 id="manifestPage">Manifest Page yjk</h1>
      <div id="root"></div>
   <script>
+    alert("script----------");
   const sendMessageToSW = msg => new Promise((resolve, reject) => {
     const messageChannel = new MessageChannel();
     messageChannel.port1.onmessage = event => {
